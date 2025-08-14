@@ -15,13 +15,16 @@
 关闭finalshell
 
 找到并修改以下代码中的路径，确保与自己 Finalshell 安装路径一致：
+
 src_file = Path(r"C:\Users\admin\AppData\Local\finalshell\config.json")
 
 修改历史保留天数（可选）
 修改以下参数即可更改保留时间（单位：秒）：
+
 twelve_months_sec = 180 * 24 * 60 * 60  # 默认 180 天
 
 运行脚本
+
 python Finalshell_CmdHistory_Clear.py
 
 替换配置文件
