@@ -1,0 +1,2 @@
+# Finalshell_CmdHistory_Clear
+使finalshell查看检索历史命令不卡顿。删除过时的finalshell历史命令，或误记录的命令输出内容。
