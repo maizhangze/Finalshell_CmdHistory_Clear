@@ -19,6 +19,7 @@
 src_file = Path(r"C:\Users\admin\AppData\Local\finalshell\config.json")
 
 修改历史保留天数（可选）
+
 修改以下参数即可更改保留时间（单位：秒）：
 
 twelve_months_sec = 180 * 24 * 60 * 60  # 默认 180 天
