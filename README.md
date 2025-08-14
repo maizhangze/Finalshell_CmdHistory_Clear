@@ -28,6 +28,8 @@ twelve_months_sec = 180 * 24 * 60 * 60  # 默认 180 天
 python Finalshell_CmdHistory_Clear.py
 
 替换配置文件
+
 脚本运行后会生成 config_new.json
+
 请在关闭 Finalshell 的情况下，将其替换原 config.json
 
