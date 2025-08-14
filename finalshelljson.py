@@ -8,7 +8,7 @@ from datetime import datetime
 src_file = Path(r"C:\Users\admin\AppData\Local\finalshell\config.json")
 # 新文件路径
 dst_file = src_file.with_name("config_new.json")
-# 12个月的秒数（按365天算）
+# 12个月的秒数（按180天算）
 twelve_months_sec = 180 * 24 * 60 * 60
 
 def is_package_manager_output(text):
@@ -161,23 +161,23 @@ def process_history(key):
 deleted_cmds, invalid_cmds = process_history("cmd_history")
 
 # 处理 file_history
-deleted_files, _ = process_history("file_history")  # file_history不需要检查有效性
+deleted_files, _ = process_history("file_history")  
 
 # 显示删除信息
 if deleted_cmds:
-    print(f"cmd_history 总共删除了 {len(deleted_cmds)} 条记录（超过12个月）：")
+    print(f"cmd_history 总共删除了 {len(deleted_cmds)} 条记录（超过6个月）：")
     for e in deleted_cmds:
         t_str = datetime.fromtimestamp(e["active_time"] / 1000).strftime("%Y-%m-%d %H:%M:%S")
         print(f"- 时间: {t_str} | 命令: {e.get('text', '')}")
 else:
-    print("cmd_history 没有超过12个月的记录需要删除。")
+    print("cmd_history 没有超过6个月的记录需要删除。")
 
 # 新增：显示无效命令删除信息
 if invalid_cmds:
     print(f"\ncmd_history 删除了 {len(invalid_cmds)} 条无效记录（包管理器输出等）：")
-    for e in invalid_cmds:  # 只显示前10条，避免输出过多
+    for e in invalid_cmds: 
         t_str = datetime.fromtimestamp(e["active_time"] / 1000).strftime("%Y-%m-%d %H:%M:%S")
-        print(f"- 时间: {t_str} | 内容: {e.get('text', '')}...")  # 限制显示长度
+        print(f"- 时间: {t_str} | 内容: {e.get('text', '')}...") 
 
 else:
     print("\ncmd_history 没有发现无效记录。")
@@ -201,3 +201,4 @@ with open(dst_file, "w", encoding="utf-8") as f:
     json.dump(data, f, ensure_ascii=False, indent=4)
 
 print(f"\n处理完成，新文件已保存到: {dst_file}")
+
