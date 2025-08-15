@@ -165,7 +165,7 @@ deleted_files, _ = process_history("file_history")
 
 # 显示删除信息
 if deleted_cmds:
-    print(f"cmd_history 总共删除了 {len(deleted_cmds)} 条记录（超过6个月）：")
+    print(f"cmd_history 总共删除了 {len(deleted_cmds)} 条记录（超过6个月）")
     for e in deleted_cmds:
         t_str = datetime.fromtimestamp(e["active_time"] / 1000).strftime("%Y-%m-%d %H:%M:%S")
         print(f"- 时间: {t_str} | 命令: {e.get('text', '')}")
@@ -178,7 +178,7 @@ if invalid_cmds:
     for e in invalid_cmds: 
         t_str = datetime.fromtimestamp(e["active_time"] / 1000).strftime("%Y-%m-%d %H:%M:%S")
         print(f"- 时间: {t_str} | 内容: {e.get('text', '')}...") 
-    print(f"\ncmd_history 删除了 {len(invalid_cmds)} 条无效记录（包管理器输出等）：")
+    print(f"\ncmd_history 删除了 {len(invalid_cmds)} 条无效记录（包管理器输出等）")
 
 else:
     print("\ncmd_history 没有发现无效记录。")
@@ -203,5 +203,6 @@ with open(dst_file, "w", encoding="utf-8") as f:
     json.dump(data, f, ensure_ascii=False, indent=4)
 
 print(f"\n处理完成，新文件已保存到: {dst_file}")
+
 
 
