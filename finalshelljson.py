@@ -174,19 +174,21 @@ else:
 
 # 新增：显示无效命令删除信息
 if invalid_cmds:
-    print(f"\ncmd_history 删除了 {len(invalid_cmds)} 条无效记录（包管理器输出等）：")
+    
     for e in invalid_cmds: 
         t_str = datetime.fromtimestamp(e["active_time"] / 1000).strftime("%Y-%m-%d %H:%M:%S")
         print(f"- 时间: {t_str} | 内容: {e.get('text', '')}...") 
+    print(f"\ncmd_history 删除了 {len(invalid_cmds)} 条无效记录（包管理器输出等）：")
 
 else:
     print("\ncmd_history 没有发现无效记录。")
 
 if deleted_files:
-    print(f"\nfile_history 总共删除了 {len(deleted_files)} 条记录（超过12个月）：")
+    
     for e in deleted_files:
         t_str = datetime.fromtimestamp(e["active_time"] / 1000).strftime("%Y-%m-%d %H:%M:%S")
         print(f"- 时间: {t_str} | 文件/目录: {e.get('text', '')}")
+    print(f"\nfile_history 总共删除了 {len(deleted_files)} 条记录（超过12个月）：")
 else:
     print("\nfile_history 没有记录需要删除。")
 
@@ -201,4 +203,5 @@ with open(dst_file, "w", encoding="utf-8") as f:
     json.dump(data, f, ensure_ascii=False, indent=4)
 
 print(f"\n处理完成，新文件已保存到: {dst_file}")
+
 
